@@ -14,7 +14,7 @@ let urlsToCache = [
 ];
 
 //install
-self.addEventListener("install", (event) => {
+self.addEventListener("install", function(event) {
     event.waitUntil (
         caches.open(CACHE_NAME).then(function(cache) {
             console.log("Cache Open");
@@ -25,7 +25,7 @@ self.addEventListener("install", (event) => {
 
 
 //cache requests to api routes
-self.addEventListener("fetch", (event) => {
+self.addEventListener("fetch", function (event) {
     if (event.request.url.includes("/api")) {
         event.respondWith(
             caches.open(DATA_CACHE_NAME).then(cache => {
